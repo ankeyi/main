@@ -1,4 +1,34 @@
 
+# archlinux system install
+前面和wiki走就ok
+systemctl stop reflector
+pacstrap /mnt base linux linux-headers linux-firmware
+进去 /mnt 后用  arch-chroot /mnt
+ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+vim /etc/locale.gen   去掉 en_US.UTF-8 and zh_CN.UTF-8 的注释
+locale=gen
+echo "an" > /etc/hostname
+echo "127.0.0.1         localhost" > /etc/hosts
+sudo pacman -S amd-ucode sudo
+passwd
+useradd -m an
+passwd an
+pacman -S grub  efibootmgr
+
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+pacman -S w3m xorg plasma-desktop w3m xcompmgr wqy-zenhei  networkmanager network-manager-applet networkmanager-pptp libx11 libxft libxinerama base-devel
+systemctl enable NetworkManager
+vim /etc/sudoers        add an
+su an
+w3m st.suckless.org
+tar zxvf st*
+cd st*
+make
+sudo make clean install
+kde切换成中文然后开机自启动(设置里)脚本
+pacman -S   polphin  #文件管理
+
 
 # enable default network 
 	virsh net-autostart default 
