@@ -100,10 +100,18 @@ done &
 # vim不能使用输入法
 	open fcitx5 wiki
 
+
+
 # 调整声音先开启这个
 	pulseaudio --start --log-target=syslog
 
 	amixer -D pulse sset Master 5%+
+# 如果是kde
+ 	vim ~/.asoundrc 
+defaults.pcm.card 1
+defaults.pcm.device 0
+defaults.ctl.card 1
+就好量
 
 # Connect WIFI
 	sudo pacman -S dhcpcd iwd
