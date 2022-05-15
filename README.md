@@ -1,10 +1,10 @@
-### Equivalent to `asctime (localtime(timer))`  of time.h
+### Equivalent to \`asctime (localtime(timer))\`  of time.h  
 	time_t biggest= 0x7FFFFFFF;
         // ctime(&biggest) Equivalent asctime(localtime(&biggest))
         printf("%s",ctime(&biggest));
 	
 ### 小技巧
-	if(i==3) or  if(3==i)
+	if(i==3) or if(3==i)
 ### 每个实参都应该具有自己的类型，这样它的值就可以赋值给与它所对应的形参类型的对象(该对象不能含有限定符)
 	int foo(const char **p){}
 	int main(int argc, char **argv)
@@ -20,13 +20,13 @@ test.c:4:13: 警告：传递‘foo’的第 1 个参数时在不兼容的指针�
 test.c:1:22: 附注：需要类型‘const char **’，但实参的类型为‘char **’
     1 | int foo(const char **p){}
 
-update 
+update  
+
 	int foo(const char **p){}
 	int main(int argc,const char **argv)
 	{
         	foo(argv);
 	}
-
 
 ### 函数原型后面要加分号
 	char * strcpy(char *dst,const char *src);
@@ -36,7 +36,7 @@ update
 	NUL用于结束一个ACSII字符串
 	NULL表示空指针
 
-### 相邻的字符串常量将被自动合并成一个字符串，在写多行信息时不必在行末加"\"，但引入了新问题
+### 相邻的字符串常量将被自动合并成一个字符串，在写多行信息时不必在行末加"\\"，但引入了新问题
 	char *available_resouces[] = {
 		"color monitor",
 		"big disk"
@@ -45,15 +45,15 @@ update
 字符串数目比预期少一个，引用会出错误，最后一个逗号存在或不存在都没有意义
 
 ### extern and static
-定义C 函数时,缺省情况下函数名字全局可见,推荐冗余加上extern关键字，这样的话对于链接到它所在目标文件的任何东西都是可见的，如果想限制这个函数，必须加static关键字
-	function apple() { /* 在任何地方均可见 */}
-	extern function pear() { /* 在任何地方均可见 */}
-	static function turnip() { /* 在这个文件之外不可见 */}
+定义C 函数时,缺省情况下函数名字全局可见,推荐冗余加上extern关键字，这样的话对于链接到它所在目标文件的任何东西都是可见的，如果想限制这个函数，必须加static关键字  
+	function apple() { /* 在任何地方均可见 */}  
+	extern function pear() { /* 在任何地方均可见 */}  
+	static function turnip() { /* 在这个文件之外不可见 */}  
 
 ###  C语言符号重载
-| 符号 | 意义 |
-| :---:|:---: |
-|static| 在函数内部表示该变量值在各个调用间保持延续性(程序运行期间局部变量不会随着函数销毁后再次调用而恢复初始值)
+|符号|意义|
+|:---:|:---:|
+|static| 在函数内部表示该变量值在各个调用间保持延续性(程序运行期间局部变量不会随着函数销毁后再次调用而恢复初始值)  
 在函数这一级表示该函数只对本文件可见|
 |extern| 用于函数定义，表示全局可见(函数默认使用extern)
 用于变量，表示它在其他地方定义|
