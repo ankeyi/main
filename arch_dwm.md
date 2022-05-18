@@ -103,9 +103,8 @@ done &
 
 
 # 调整声音先开启这个
-	pulseaudio --start --log-target=syslog
-
-	amixer -D pulse sset Master 5%+
+ sudo pacman -S alsa-utils
+alsamixer
 # 如果是kde
  	vim ~/.asoundrc 
 defaults.pcm.card 1
