@@ -1,0 +1,50 @@
+wget http://www.apuebook.com/src.3e.tar.gz
+tar zxvf src*.gz
+
+make
+make 失败用make clean
+sudo apt-get install libbsd-dev
+解决办法：将./stdio/buf.c文件的
+
+
+#ifdef _LP64
+#define _flag __pad[4]
+#define _ptr __pad[1]
+#define _base __pad[2]
+#endif
+删掉
+
+同时将下面的flag全部换成flags：
+
+int
+is_unbuffered(FILE *fp)
+{
+    return(fp->_flags & _IONBF);
+}
+
+int
+is_linebuffered(FILE *fp)
+{
+	return(fp->_flag & _IOLBF);
+}
+
+int
+buffer_size(FILE *fp)
+{
+#ifdef _LP64
+    return(fp->_IO_buf_end - fp->_IO_buf_base);
+#else
+	return(BUFSIZ);	/* just a guess */
+#endif
+}
+
+#else
+
+#error unknown stdio implementation!
+
+#endif
+
+
+
+sudo cp  ./include/apue.h   /usr/include/
+             sudo cp  ./lib/libapue.a   /usr/local/lib/
