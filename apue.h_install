@@ -1,6 +1,10 @@
 wget http://www.apuebook.com/src.3e.tar.gz
 tar zxvf src*.gz
 
+vim ~/apue.3e/filedir/devrdev.c 
+
+#include <sys/sysmacros.h>
+
 make
 make 失败用make clean
 sudo apt-get install libbsd-dev
